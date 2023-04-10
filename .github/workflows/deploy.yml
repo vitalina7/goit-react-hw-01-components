@@ -1,24 +1,6 @@
-name: Build and deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-
-      - name: Install, lint, build 🔧
-        run: |
-          npm install
-          npm run lint:js
-          npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with:
-          branch: gh-pages
-          folder: build
+repository_dispatch:
+  inputs:
+    live_page:
+      description: 'Посилання на живу сторінку'
+      required: true
+      default: 'https://vitalina7.github.io/goit-react-hw-01-components/'
